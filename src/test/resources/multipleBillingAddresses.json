@@ -1,0 +1,22 @@
+[
+  {
+    "firstName": "demo",
+    "lastName": "user",
+    "country": "India",
+    "addressLineOne": "Pune",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "postalCode": "411001",
+    "email": "dzianis283@tut.by"
+  },
+  {
+    "firstName": "usa",
+    "lastName": "user",
+    "country": "United States (US)",
+    "addressLineOne": "Pune",
+    "city": "New York",
+    "state": "California",
+    "postalCode": "99950",
+    "email": "dzianis283@tut.by"
+  }
+]

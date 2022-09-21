@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1215,
+    "featured": true,
+    "name": "Blue Shoes"
+  },
+  {
+    "id": 1198,
+    "featured": true,
+    "name": "Anchor Bracelet"
+  },
+  {
+    "id": 1214,
+    "featured": false,
+    "name": "Red Shoes"
+  },
+  {
+    "id": 1209,
+    "featured": true,
+    "name": "Denim Blue Jeans"
+  },
+  {
+    "id": 1202,
+    "featured": false,
+    "name": "Green Tshirt"
+  },
+  {
+    "id": 1205,
+    "featured": true,
+    "name": "Basic Blue Jeans"
+  },
+  {
+    "id": 1196,
+    "featured": true,
+    "name": "Blue Tshirt"
+  },
+  {
+    "id": 1193,
+    "featured": false,
+    "name": "Black Over-the-shoulder Handbag"
+  },
+  {
+    "id": 1199,
+    "featured": false,
+    "name": "Boho Bangle Bracelet"
+  },
+  {
+    "id": 1206,
+    "featured": false,
+    "name": "Blue Denim Shorts"
+  }
+]
