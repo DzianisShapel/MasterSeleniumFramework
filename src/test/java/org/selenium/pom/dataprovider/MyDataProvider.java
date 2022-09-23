@@ -6,28 +6,25 @@ import org.selenium.pom.utils.JacksonUtils;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MyDataProvider {
 
-
-
     @DataProvider(name = "getStoreProducts")
     public static Iterator<Product> getStoreProducts() throws IOException {
-        Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
-        List<Product> productsList = new LinkedList<>(Arrays.asList(products));
-        for (int i = 0; i < productsList.size(); i++) {
-            if (productsList.get(i).getId() != 1215 || productsList.get(i).getId() != 1198) {
-                productsList.remove(productsList.get(i));
-            }
-        }
+       Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
+       List<Product> productsList = new LinkedList<>(Arrays.asList(products));
+       Iterator<Product> iterator = productsList.iterator();
+       while(iterator.hasNext()) {
+           Product pr = iterator.next();
+           if (pr.getId() != 1215 && pr.getId() != 1198) {
+               iterator.remove();
+           }
+       }
+        System.out.println("" + productsList);
+    //   productsList = productsList.stream().filter(product -> product.getId() != 1215 && product.getId() != 1198).collect(Collectors.toList());
 
-      /*  for (Product product : productsList) {
-            if (product.getId() != 1215 || product.getId() != 1198) {
-                productsList.remove(product);
-            }
-        }*/
-        Iterator<Product> itr = productsList.iterator();
-        return itr;
+        return productsList.iterator();
     }
 
 
