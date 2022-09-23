@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 public class AddToCartTest extends BaseTest {
 
@@ -24,17 +25,16 @@ public class AddToCartTest extends BaseTest {
     }
 
 
-    /*@Test(dataProvider = "getStoreProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "getStoreProducts", dataProviderClass = MyDataProvider.class)
     public void addMultipleProductsToCartFromStorePage(Product product) throws IOException {
         StorePage storePage = new StorePage(getDriver()).
                 load();
-        for (Product storeProduct: MyDataProvider.getStoreProducts()) {
-            storePage.clickAddToCartBtn(storeProduct.getName());
+        for (Iterator<Product> it = MyDataProvider.getStoreProducts(); it.hasNext();) {
+            storePage.getProductThumbnail().clickAddToCartBtn(product.getName());
         }
-        storePage.clickAddToCartBtn(product.getName()).
-                clickViewCart();
-        //Assert.assertEquals(cartPage.getProductName(), product.getName());
-    }*/
+        CartPage cartPage = storePage.getProductThumbnail().clickViewCart();
+        Assert.assertEquals(cartPage.getProductName(), product.getName());
+    }
 
 
     @Test

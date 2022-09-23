@@ -5,24 +5,30 @@ import org.selenium.pom.objects.Product;
 import org.selenium.pom.utils.JacksonUtils;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
+import java.util.*;
 
 public class MyDataProvider {
 
-    /*
-    need work!)))))
+
+
     @DataProvider(name = "getStoreProducts")
-    public static Object[] getStoreProducts() throws IOException {
+    public static Iterator<Product> getStoreProducts() throws IOException {
         Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
-        Product[] storeProducts = new Product[2];
-        int currentIndex = 0;
-        for (Product product : products) {
-            if (product.getId() == 1215 || product.getId() == 1198) {
-                storeProducts[currentIndex] = product;
-                currentIndex++;
+        List<Product> productsList = new LinkedList<>(Arrays.asList(products));
+        for (int i = 0; i < productsList.size(); i++) {
+            if (productsList.get(i).getId() != 1215 || productsList.get(i).getId() != 1198) {
+                productsList.remove(productsList.get(i));
             }
         }
-        return storeProducts;
-    }*/
+
+      /*  for (Product product : productsList) {
+            if (product.getId() != 1215 || product.getId() != 1198) {
+                productsList.remove(product);
+            }
+        }*/
+        Iterator<Product> itr = productsList.iterator();
+        return itr;
+    }
 
 
     //, parallel = true
