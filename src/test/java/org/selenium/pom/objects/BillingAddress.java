@@ -14,6 +14,14 @@ public class BillingAddress {
     public BillingAddress() {
     }
 
+    public BillingAddress(String firstName, String lastName, String addressLineOne, String postalCode, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressLineOne = addressLineOne;
+        this.postalCode = postalCode;
+        this.email = email;
+    }
+
     public BillingAddress(String firstName, String lastName, String addressLineOne, String city, String postalCode, String email) {
         this.firstName = firstName;
         this.lastName = lastName;

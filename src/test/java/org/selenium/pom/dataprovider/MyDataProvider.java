@@ -1,6 +1,7 @@
 package org.selenium.pom.dataprovider;
 
 import org.selenium.pom.objects.BillingAddress;
+import org.selenium.pom.objects.Coupon;
 import org.selenium.pom.objects.Product;
 import org.selenium.pom.utils.JacksonUtils;
 import org.testng.annotations.DataProvider;
@@ -21,7 +22,6 @@ public class MyDataProvider {
                iterator.remove();
            }
        }
-        System.out.println("" + productsList);
     //   productsList = productsList.stream().filter(product -> product.getId() != 1215 && product.getId() != 1198).collect(Collectors.toList());
 
         return productsList.iterator();
@@ -56,6 +56,11 @@ public class MyDataProvider {
     @DataProvider(name = "getBillingAddresses")
     public Object[] getBillingAddresses() throws IOException {
         return JacksonUtils.deserializeJson("multipleBillingAddresses.json", BillingAddress[].class);
+    }
+
+    @DataProvider(name = "getCoupons")
+    public static Object[] getCoupons() throws IOException {
+        return JacksonUtils.deserializeJson("coupons.json", Coupon[].class);
     }
 
 

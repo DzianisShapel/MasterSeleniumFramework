@@ -18,5 +18,14 @@
     "state": "California",
     "postalCode": "99950",
     "email": "dzianis283@tut.by"
+  },
+  {
+    "firstName": "british",
+    "lastName": "user",
+    "country": "United Kingdom (UK)",
+    "addressLineOne": "Pune",
+    "city": "London",
+    "postalCode": "411001",
+    "email": "dzianis283@tut.by"
   }
 ]
