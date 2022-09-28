@@ -1,5 +1,14 @@
 [
-  {"name": "freeship"},
-  {"name": "offcart5"},
-  {"name": "off25"}
+  {
+    "name": "freeship",
+    "discount": 100
+  },
+  {
+    "name": "offcart5",
+    "discount": 5
+  },
+  {
+    "name": "off25",
+    "discount": 25
+  }
 ]

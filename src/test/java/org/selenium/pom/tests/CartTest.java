@@ -5,6 +5,7 @@ import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.dataprovider.MyDataProvider;
 import org.selenium.pom.objects.Coupon;
 import org.selenium.pom.pages.CartPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
@@ -17,6 +18,7 @@ public class CartTest extends BaseTest {
         injectCookiesToBrowser(cartApi.getCookies());
 
         cartPage.load().applyCoupon(coupon.getName());
-
+        Assert.assertEquals(cartPage.getCouponName(coupon.getName()), "Coupon: " + coupon.getName());
+        Assert.assertEquals(cartPage.getAlertFld(), "Coupon code applied successfully.");
     }
 }

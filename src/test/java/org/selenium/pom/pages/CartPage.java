@@ -18,6 +18,14 @@ public class CartPage extends BasePage {
     private final By checkoutBtn = By.cssSelector(".checkout-button");
     private final By applyCouponBtn = By.cssSelector("button[value='Apply coupon']");
     private final By couponCodeFld = By.cssSelector("#coupon_code");
+    private final By subTotal = By.cssSelector("tr[class='cart-subtotal'] bdi:nth-child(1)");
+    private final By total = By.cssSelector("tr[class='order-total'] bdi:nth-child(1)");
+    private final By shippingAmount = By.cssSelector("tr[class='woocommerce-shipping-totals shipping'] span[class='woocommerce-Price-amount amount'] span:nth-child(1)");
+    private final By alertFld = By.cssSelector("div[role='alert']");
+
+
+
+
 
     /*// PageFactory sample
     @FindBy(css = "td[class='product-name'] a")
@@ -51,6 +59,19 @@ public class CartPage extends BasePage {
         }
         return orderProductsName;
     }
+
+    public String getCouponName(String coupon){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tr[class='cart-discount coupon-" + coupon + "'] th"))).getText();
+    }
+
+    public  String getShippingAmount() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(shippingAmount)).getText();
+    }
+
+    public String getAlertFld() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(alertFld)).getText();
+    }
+
 
     public CartPage applyCoupon(String coupon) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(couponCodeFld)).sendKeys(coupon);

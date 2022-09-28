@@ -47,14 +47,13 @@ public class MyFirstTestCase extends BaseTest {
 
     }
 
-//    @Test
+    //@Test
     public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
 
         String searchFor = "Blue";
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Product product = new Product(1215);
         User user = new User(ConfigLoader.getInstance().getUsername(), ConfigLoader.getInstance().getPassword());
-
 
         StorePage storePage = new HomePage(getDriver()).
                 load().getMyHeader().
