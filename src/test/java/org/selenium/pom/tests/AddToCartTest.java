@@ -9,8 +9,10 @@ import org.selenium.pom.pages.ProductPage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
+import java.util.Iterator;
 
 public class AddToCartTest extends BaseTest {
 
@@ -23,19 +25,20 @@ public class AddToCartTest extends BaseTest {
         Assert.assertEquals(cartPage.getProductName(), product.getName());
     }
 
-
-    /*@Test(dataProvider = "getStoreProducts", dataProviderClass = MyDataProvider.class)
-    public void addMultipleProductsToCartFromStorePage(Product product) throws IOException {
-        StorePage storePage = new StorePage(getDriver()).
-                load();
-        for (Product storeProduct: MyDataProvider.getStoreProducts()) {
-            storePage.clickAddToCartBtn(storeProduct.getName());
+    @Test
+    public void addMultipleProductsToCartFromStorePage() throws IOException {
+        Iterator<Product> iterator = MyDataProvider.getStoreProducts();
+        StorePage storePage = new StorePage(getDriver()).load();
+        List<String> expectedProducts = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Product pr = iterator.next();
+            storePage.getProductThumbnail().clickAddToCartBtn(pr.getName());
+            expectedProducts.add(pr.getName());
         }
-        storePage.clickAddToCartBtn(product.getName()).
-                clickViewCart();
-        //Assert.assertEquals(cartPage.getProductName(), product.getName());
-    }*/
-
+        CartPage cartPage = storePage.getProductThumbnail().clickViewCart();
+        List<String> actualProducts = cartPage.getProductsFromCart();
+        Assert.assertEquals(actualProducts, expectedProducts);
+    }
 
     @Test
     public void AddToCartFromProductPage() {

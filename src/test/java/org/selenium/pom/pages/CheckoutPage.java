@@ -45,8 +45,6 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-
-
     public CheckoutPage setFirstNameFld(String firstName){
         WebElement e = waitForElementToBeVisible(firstNameFld);
         e.clear();

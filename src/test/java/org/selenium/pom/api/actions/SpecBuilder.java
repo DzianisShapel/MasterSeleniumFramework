@@ -15,13 +15,13 @@ public class SpecBuilder {
         return new RequestSpecBuilder().
                 setBaseUri(ConfigLoader.getInstance().getBaseUrl()).
                 addFilter(new AllureRestAssured()).
-//                log(LogDetail.ALL).
+                log(LogDetail.ALL).
                 build();
     }
 
     public static ResponseSpecification getResponseSpecification(){
         return  new ResponseSpecBuilder().
-//                log(LogDetail.ALL).
+                log(LogDetail.ALL).
                 build();
     }
 }

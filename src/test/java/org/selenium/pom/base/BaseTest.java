@@ -53,13 +53,13 @@ public class BaseTest {
     public synchronized void startDriver(@Optional String browser) {
         //will take browser from TestNG.xml
         browser = System.getProperty("browser", browser);
-//        String browser = "FIREFOX";
+   //     String browser = "FIREFOX";
 //        driver = new DriverManager().initializeDriver(browser);
 //        if(browser == null) browser = "CHROME";
-/*      first implementation
-/        setDriver(new DriverManagerOriginal().initializeDriver(browser));*/
+//*      first implementation
+        setDriver(new DriverManagerOriginal().initializeDriver(browser));
         // used with DriverManage interface
-        setDriver(DriverManagerFactory.getManager(DriverType.valueOf(browser)).createDriver());
+  //      setDriver(DriverManagerFactory.getManager(DriverType.valueOf(browser)).createDriver());
         //implementation of abstract class (abstractFactory package)
 //        setDriverManager(DriverManagerFactoryAbstract.
 //                getManager(DriverType.valueOf(browser)));

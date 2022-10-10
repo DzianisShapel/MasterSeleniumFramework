@@ -1,7 +1,7 @@
 package org.selenium.pom.tests;
 
-import org.selenium.pom.api.actions.CartApi;
-import org.selenium.pom.api.actions.SignUpApi;
+import org.selenium.pom.api.CartApi;
+import org.selenium.pom.api.SignUpApi;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.Product;
 import org.selenium.pom.objects.User;
