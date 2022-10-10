@@ -21,6 +21,8 @@ public class CartPage extends BasePage {
     private final By subTotal = By.cssSelector("tr[class='cart-subtotal'] bdi:nth-child(1)");
     private final By total = By.cssSelector("tr[class='order-total'] bdi:nth-child(1)");
     private final By shippingAmount = By.cssSelector("tr[class='woocommerce-shipping-totals shipping'] bdi:nth-child(1)");
+    private final By stateTax = By.cssSelector("td[data-title='CA State Tax'] span[class='woocommerce-Price-amount amount']");
+
     private final By alertFld = By.cssSelector("div[role='alert']");
 
 
@@ -66,9 +68,7 @@ public class CartPage extends BasePage {
 
     public  String getShippingAmount() {
         String shippingAmountString = wait.until(ExpectedConditions.visibilityOfElementLocated(shippingAmount)).getText();
-        System.out.println(shippingAmountString);
         String formattedShippingAmount = shippingAmountString.replace("$","");
-        System.out.println(formattedShippingAmount);
         return formattedShippingAmount;
     }
 
@@ -77,6 +77,20 @@ public class CartPage extends BasePage {
         String formattedTotal = totalString.replace("$","");
         return formattedTotal;
     }
+
+    public String getSubTotal(){
+        String subTotalString = wait.until(ExpectedConditions.visibilityOfElementLocated(subTotal)).getText();
+        String formattedSubTotal = subTotalString.replace("$","");
+        return formattedSubTotal;
+    }
+
+    public String getStateTax(){
+        String stateTaxString = wait.until(ExpectedConditions.visibilityOfElementLocated(stateTax)).getText();
+        String formattedStateTax = stateTaxString.replace("$","");
+        return formattedStateTax;
+    }
+
+
 
     public String getAlertFld() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(alertFld)).getText();

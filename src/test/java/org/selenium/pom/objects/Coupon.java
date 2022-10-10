@@ -3,7 +3,7 @@ package org.selenium.pom.objects;
 public class Coupon {
 
     private String name;
-    private int discount;
+
 
     public Coupon() {
     }
@@ -16,7 +16,4 @@ public class Coupon {
         return name;
     }
 
-    public int getDiscount() {
-        return discount;
-    }
 }

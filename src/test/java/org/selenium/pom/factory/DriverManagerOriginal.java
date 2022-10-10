@@ -12,12 +12,12 @@ public class DriverManagerOriginal {
     public WebDriver initializeDriver(String browser) {
 
         WebDriver driver;
-        /* use JVM argument or maven property
+        //use JVM argument or maven property
          String localBrowser;
-        localBrowser = System.getProperty("browser");
+        localBrowser = System.getProperty("browser", "CHROME");
 
         //use testNG XML. AND do not forget to remove jvm argument
-        localBrowser = browser;*/
+       //localBrowser = browser;
         switch (DriverType.valueOf(browser)) {
             case CHROME:
                 WebDriverManager.chromedriver().cachePath("Drivers").setup();
