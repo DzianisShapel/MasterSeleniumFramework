@@ -56,4 +56,10 @@ public class AccountPage extends BasePage {
         load("/account/");
         return this;
     }
+
+    public AccountPage loadOrders(){
+        load("/account/orders");
+        return this;
+    }
+
 }

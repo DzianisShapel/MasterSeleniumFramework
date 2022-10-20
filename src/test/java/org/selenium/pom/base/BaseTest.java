@@ -89,6 +89,7 @@ public class BaseTest {
         List<Cookie> seleniumCookies = new CookieUtils().convertRestAssuredCookiesToSeleniumCookies(cookies);
         for (Cookie cookie : seleniumCookies) {
             getDriver().manage().addCookie(cookie);
+            System.out.println(cookie + " is added to seleniumCookies");
         }
     }
 

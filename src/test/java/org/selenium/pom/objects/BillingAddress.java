@@ -10,6 +10,8 @@ public class BillingAddress {
 
     private String country;
     private String state;
+    private String countryCode;
+    private String stateCode;
 
     public BillingAddress() {
     }
@@ -99,5 +101,13 @@ public class BillingAddress {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public String getStateCode() {
+        return stateCode;
     }
 }

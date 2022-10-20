@@ -23,6 +23,17 @@ public class FakerUtils {
         return faker.internet().password();
     }
 
+    public String generateFirstName(){
+        Faker faker = new Faker();
+        return faker.name().firstName();
+    }
+
+    public String generateLastName(){
+        Faker faker = new Faker();
+        return faker.name().lastName();
+    }
+
+
 
 
 }

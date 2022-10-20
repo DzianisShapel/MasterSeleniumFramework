@@ -2,6 +2,8 @@
   "firstName": "demo",
   "lastName": "user",
   "country": "India",
+  "countryCode": "IN",
+  "stateCode": "MH",
   "addressLineOne": "Pune",
   "city": "Pune",
   "state": "Maharashtra",
