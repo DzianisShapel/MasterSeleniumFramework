@@ -15,17 +15,37 @@
     "country": "United States (US)",
     "addressLineOne": "Pune",
     "city": "New York",
-    "state": "California",
-    "postalCode": "99950",
+    "state": "Connecticut",
+    "postalCode": "06013",
+    "email": "dzianis283@tut.by"
+  },
+  {
+    "firstName": "usa",
+    "lastName": "user",
+    "country": "United States (US)",
+    "addressLineOne": "Pune",
+    "city": "New York",
+    "state": "Colorado",
+    "postalCode": "80231",
+    "email": "dzianis283@tut.by"
+  },
+  {
+    "firstName": "usa",
+    "lastName": "user",
+    "country": "United States (US)",
+    "addressLineOne": "Pune",
+    "city": "New York",
+    "state": "Mississippi",
+    "postalCode": "39503",
     "email": "dzianis283@tut.by"
   },
   {
     "firstName": "british",
     "lastName": "user",
     "country": "United Kingdom (UK)",
-    "addressLineOne": "Pune",
+    "addressLineOne": "Notting hill",
     "city": "London",
-    "postalCode": "411001",
-    "email": "dzianis283@tut.by"
+    "postalCode": "WC2N 5DU",
+    "email": "london283@tut.by"
   }
 ]

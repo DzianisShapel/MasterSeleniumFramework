@@ -110,4 +110,20 @@ public class BillingAddress {
     public String getStateCode() {
         return stateCode;
     }
+
+    @Override
+    public String toString() {
+        return "BillingAddress{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addressLineOne='" + addressLineOne + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", stateCode='" + stateCode + '\'' +
+                '}';
+    }
 }

@@ -13,7 +13,7 @@ import java.io.IOException;
 public class NavigationTest extends BaseTest {
 
     @Test
-    public void NavigateFromHomeToStoreUsingMainMenu(){
+    public void NavigateFromHomeToStoreUsingMainMenu() throws InterruptedException {
         StorePage storePage = new HomePage(getDriver()).
                 load().getMyHeader().
                 navigateToStoreUsingMenu();
@@ -27,7 +27,6 @@ public class NavigationTest extends BaseTest {
                 navigateToProductPage(1215);
         Assert.assertTrue(productPage.getProductTitle().equals(new Product(1215).getName()));
     }
-
 
     @Test
     public void NavigateFromHomeToFeaturedProductPage() throws IOException {

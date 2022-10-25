@@ -30,7 +30,6 @@ public class DriverManagerOriginal {
             default:
                 throw new IllegalStateException("Invalid browser name: " + browser);
         }
-
     return driver;
     }
 }

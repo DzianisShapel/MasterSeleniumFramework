@@ -12,7 +12,7 @@ import java.io.IOException;
 public class SearchTest extends BaseTest {
 
     @Test
-    public void searchWithPartialMatch() {
+    public void searchWithPartialMatch() throws InterruptedException {
         String searchFor = "Blue";
         StorePage storePage = new StorePage(getDriver()).
                 load().

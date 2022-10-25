@@ -36,6 +36,9 @@ public class CheckoutPage extends BasePage {
 
     private final By productName = By.cssSelector("td[class='product-name']");
 
+    private final By stateTax = By.xpath("(//span[@class='woocommerce-Price-amount amount'])[4]");
+
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -124,14 +127,25 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage setBillingAddress(BillingAddress billingAddress){
-        return  setFirstNameFld(billingAddress.getFirstName()).
-                setLastNameFld(billingAddress.getLastName()).
-                selectCountry(billingAddress.getCountry()).
-                setBillingAddressFld(billingAddress.getAddressLineOne()).
-                setBillingCityFld(billingAddress.getCity()).
-                selectState(billingAddress.getState()).
-                setBillingPostCodeFld(billingAddress.getPostalCode()).
-                setBillingEmailFld(billingAddress.getEmail());
+
+        if ("United Kingdom (UK)".equals(billingAddress.getCountry())) {
+            return  setFirstNameFld(billingAddress.getFirstName()).
+                    setLastNameFld(billingAddress.getLastName()).
+                    selectCountry(billingAddress.getCountry()).
+                    setBillingAddressFld(billingAddress.getAddressLineOne()).
+                    setBillingCityFld(billingAddress.getCity()).
+                    setBillingPostCodeFld(billingAddress.getPostalCode()).
+                    setBillingEmailFld(billingAddress.getEmail());
+        } else {
+            return  setFirstNameFld(billingAddress.getFirstName()).
+                    setLastNameFld(billingAddress.getLastName()).
+                    selectCountry(billingAddress.getCountry()).
+                    setBillingAddressFld(billingAddress.getAddressLineOne()).
+                    setBillingCityFld(billingAddress.getCity()).
+                    selectState(billingAddress.getState()).
+                    setBillingPostCodeFld(billingAddress.getPostalCode()).
+                    setBillingEmailFld(billingAddress.getEmail());
+        }
     }
 
 
@@ -178,6 +192,13 @@ public class CheckoutPage extends BasePage {
 
     public String getProductName(){
        return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
+    }
+
+    public String getStateTax(){
+        waitForOverlaysToDisappear(ovarlay);
+        String stateTaxString = wait.until(ExpectedConditions.visibilityOfElementLocated(stateTax)).getText();
+        String formattedStateTax = stateTaxString.replace("$","");
+        return formattedStateTax;
     }
 
     /*additional solution to handle StaleElementReferenceException

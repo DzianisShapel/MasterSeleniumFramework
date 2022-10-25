@@ -25,10 +25,6 @@ public class CartPage extends BasePage {
 
     private final By alertFld = By.cssSelector("div[role='alert']");
 
-
-
-
-
     /*// PageFactory sample
     @FindBy(css = "td[class='product-name'] a")
     private WebElement productName;

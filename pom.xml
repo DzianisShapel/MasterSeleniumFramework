@@ -161,10 +161,10 @@
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
             <parallel>methods</parallel>
-            <threadCount>5</threadCount>
-<!--             <suiteXmlFiles>-->
-<!--              <suiteXmlFile>testng.xml</suiteXmlFile>-->
-<!--            </suiteXmlFiles>-->
+<!--            <threadCount>5</threadCount>-->
+             <suiteXmlFiles>
+              <suiteXmlFile>testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
           </configuration>
           <dependencies>
             <dependency>

@@ -23,10 +23,22 @@ public class MyDataProvider {
            }
        }
     //   productsList = productsList.stream().filter(product -> product.getId() != 1215 && product.getId() != 1198).collect(Collectors.toList());
-
         return productsList.iterator();
     }
 
+    @DataProvider(name = "getUSABillingAddresses")
+    public static Iterator<BillingAddress> getUSABillingAddresses() throws IOException {
+        BillingAddress[] usaBillingAddresses = JacksonUtils.deserializeJson("multipleBillingAddresses.json", BillingAddress[].class);
+        List<BillingAddress> usaBillingAddressesList = new ArrayList<>(Arrays.asList(usaBillingAddresses));
+        Iterator<BillingAddress> iterator = usaBillingAddressesList.iterator();
+        while(iterator.hasNext()) {
+            BillingAddress bl = iterator.next();
+            if (!"United States (US)".equals(bl.getCountry())) {
+                iterator.remove();
+            }
+        }
+        return usaBillingAddressesList.iterator();
+    }
 
     //, parallel = true
     @DataProvider(name = "getFeaturedProducts", parallel = true)
@@ -53,6 +65,7 @@ public class MyDataProvider {
         return size;
     }
 
+    //should be updated
     @DataProvider(name = "getBillingAddresses")
     public Object[] getBillingAddresses() throws IOException {
         return JacksonUtils.deserializeJson("multipleBillingAddresses.json", BillingAddress[].class);

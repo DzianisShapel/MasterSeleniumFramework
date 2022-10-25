@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.selenium.pom.api.actions.ApiRequest;
 
 import org.selenium.pom.objects.BillingAddress;
@@ -33,6 +34,9 @@ public class CheckoutApi {
         return cookies;
     }
 
+    private Integer orderNumber;
+    private String orderDate;
+
     public CheckoutApi() {
     }
 
@@ -40,7 +44,7 @@ public class CheckoutApi {
         this.cookies = cookies;
     }
 
-    public Response checkout() throws IOException {
+    public Response checkout(Product product) throws IOException {
 
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         String username = "demouser" + new FakerUtils().generateRandomNumber();
@@ -51,21 +55,14 @@ public class CheckoutApi {
         SignUpApi signUpApi = new SignUpApi();
         signUpApi.register(user);
         Cookie loggedInsignUpApiCookie = signUpApi.getCookies().get("wordpress_logged_in_e39c30ea93030240fdcfed1ddf385ba1");
-
-        System.out.println("signUpApi cookies: " + signUpApi.getCookies() +
-                "logged_in cokie: " + signUpApi.getCookies().getValue("wordpress_logged_in_e39c30ea93030240fdcfed1ddf385ba1"));
+        List<Cookie> loggedInCookie = new ArrayList<>();
+        loggedInCookie.add(loggedInsignUpApiCookie);
+        Cookies cookiesForInjection = new Cookies(loggedInCookie);
 
         CartApi cartApi = new CartApi(signUpApi.getCookies());
-        Product product = new Product(1215);
         cartApi.addToCart(product.getId(), 1);
-        cookies = cartApi.getCookies();
-
-        Cookie myCartApiCookie = cartApi.getCookies().get("wp_woocommerce_session_e39c30ea93030240fdcfed1ddf385ba1");
-        System.out.println("CARTAPI cookies: " + cartApi.getCookies());
-
-        List<Cookie> cookiesForAccountPage = new ArrayList<>();
-        cookiesForAccountPage.add(loggedInsignUpApiCookie);
-        cookiesForAccountPage.add(myCartApiCookie);
+       // cookies = cartApi.getCookies();
+        cookies = signUpApi.getCookies();
 
         Response checkoutPage = ApiRequest.get("/checkout", cookies);
 
@@ -101,9 +98,9 @@ public class CheckoutApi {
                 formParams(formParams).
                 cookies(cookies).
                 log().all().
-                when().
+        when().
                 post("/?wc-ajax=checkout").
-                then().
+        then().
                 log().all().
                 extract().response();
 
@@ -111,43 +108,44 @@ public class CheckoutApi {
             throw new RuntimeException("Failed to add product, HTTP Status Code: " + response.getStatusCode());
         }
 
-        cookiesForAccountPage.add(response.getDetailedCookie("woocommerce_items_in_cart"));
-        cookiesForAccountPage.add(response.getDetailedCookie("woocommerce_cart_hash"));
+        orderNumber = response.body().jsonPath().getInt("order_id");
+        String redirect = response.body().jsonPath().getString("redirect");
 
-        Cookies cookiesForAccountPage2 = new Cookies(cookiesForAccountPage);
-        this.cookies = cookiesForAccountPage2;
-        System.out.println("cookiesForAccountPage2 COOKIES: " + cookiesForAccountPage2 + " Checkout detailed cookies: " + response.getDetailedCookies());
-        return response;
-    }
-
-    private Response getCheckoutPage() {
-        Cookies cookies = new Cookies();
-
-        Response response = ApiRequest.get("/checkout", cookies);
-        if (response.getStatusCode() != 200) {
-            throw new RuntimeException("Failed to fetch the account, HTTP Status Code: " + response.getStatusCode());
-        }
-        return response;
-    }
-
-       /* public Response getOrderReceivedPage() throws IOException {
-        checkout();
-
-        Header header = new Header("content-type", "text/html");
-        Headers headers = new Headers(header);
-        Response response = given().
+        Response orderReceivedPage = given().
                 baseUri(ConfigLoader.getInstance().getBaseUrl()).
                 headers(headers).
                 cookies(cookies).
                 log().all().
         when().
                 get(redirect).
-                then().
+        then().
                 log().all().
                 extract().response();
 
-        String orderNumber = response.htmlPath().getString("//strong[normalize-space()='36412']");
-        System.out.println("ORDERNUMBER IS: " + orderNumber);
+        Document doc = Jsoup.parse(orderReceivedPage.body().prettyPrint());
+        extractDate(doc);
+
+        this.cookies = cookiesForInjection;
         return response;
-    }*/
+    }
+
+    private String extractDate(Document doc) {
+        Element element  = doc.selectFirst(".woocommerce-order-overview__date.date");
+        String receivedOrderDate = element.text();
+        return orderDate = formatString(receivedOrderDate);
+    }
+
+    private String formatString(String receivedDate){
+        String formatedStateTax = receivedDate.replace("Date: ","");
+        return formatedStateTax;
+    }
+
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
 }

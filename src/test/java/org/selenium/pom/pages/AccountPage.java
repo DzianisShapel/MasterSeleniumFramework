@@ -12,11 +12,7 @@ public class AccountPage extends BasePage {
     private final By loginBtn =  By.cssSelector("button[value='Log in']");
     private final By contentMsg = By.cssSelector("div[id='content'] li:nth-child(1)");
     private final By orders  = By.cssSelector("li[class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders'] a");
-    private final By viewOrdersBtn = By.cssSelector(".woocommerce-button.button.view");
 
-    private final By orderDetails = By.cssSelector(".woocommerce-order-details__title");
-
-    private final By productName = By.cssSelector("a[href='https://askomdch.com/product/blue-shoes/']");
 
     public AccountPage(WebDriver driver) {
         super(driver);
@@ -38,28 +34,8 @@ public class AccountPage extends BasePage {
         return this;
     }
 
-    public  AccountPage viewOrder(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(viewOrdersBtn)).click();
-        return this;
-    }
-
-    public String getOrderDetailsTitle(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(orderDetails)).getText();
-    }
-
-    public  String getOrderedProductName(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
-    }
-
-
     public AccountPage load(){
         load("/account/");
         return this;
     }
-
-    public AccountPage loadOrders(){
-        load("/account/orders");
-        return this;
-    }
-
 }

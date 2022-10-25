@@ -55,8 +55,9 @@ public class StorePage extends BasePage {
         return this;
     }
 
-    public String getTitle(){
+    public String getTitle() throws InterruptedException {
 //        wait.until(ExpectedConditions.urlContains("post_type=product"));
+        Thread.sleep(2000);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(title)).getText();
     }
 
