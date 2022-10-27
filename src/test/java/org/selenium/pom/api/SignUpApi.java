@@ -12,6 +12,7 @@ import org.selenium.pom.constants.EndPoint;
 import org.selenium.pom.objects.User;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 

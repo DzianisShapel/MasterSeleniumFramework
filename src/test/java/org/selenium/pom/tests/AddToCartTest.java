@@ -31,9 +31,9 @@ public class AddToCartTest extends BaseTest {
         StorePage storePage = new StorePage(getDriver()).load();
         List<String> expectedProducts = new ArrayList<>();
         while (iterator.hasNext()) {
-            Product pr = iterator.next();
-            storePage.getProductThumbnail().clickAddToCartBtn(pr.getName());
-            expectedProducts.add(pr.getName());
+            Product product = iterator.next();
+            storePage.getProductThumbnail().clickAddToCartBtn(product.getName());
+            expectedProducts.add(product.getName());
         }
         CartPage cartPage = storePage.getProductThumbnail().clickViewCart();
         List<String> actualProducts = cartPage.getProductsFromCart();
@@ -56,7 +56,4 @@ public class AddToCartTest extends BaseTest {
                 clickViewCart();
         Assert.assertEquals(cartPage.getProductName(), product.getName());
     }
-
-
-
 }

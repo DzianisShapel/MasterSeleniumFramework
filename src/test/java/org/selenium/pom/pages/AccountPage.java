@@ -29,10 +29,11 @@ public class AccountPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(contentMsg)).getText();
     }
 
+    /*
     public AccountPage navigateToOrders(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(orders)).click();
         return this;
-    }
+    }*/
 
     public AccountPage load(){
         load("/account/");

@@ -41,11 +41,8 @@ public class CartTest extends BaseTest {
             default:
                 throw new IllegalStateException("Unexpected value: " + coupon.getName());
         }
-
         Assert.assertEquals(cartPage.getCouponName(coupon.getName()), "Coupon: " + coupon.getName());
         Assert.assertEquals(cartPage.getAlertFld(), "Coupon code applied successfully.");
         Assert.assertEquals(new BigDecimal(cartPage.getTotal()), totalAfterCoupon);
     }
-
-
 }

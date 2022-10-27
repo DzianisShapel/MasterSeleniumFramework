@@ -13,8 +13,8 @@ public class MyDataProvider {
 
     @DataProvider(name = "getStoreProducts")
     public static Iterator<Product> getStoreProducts() throws IOException {
-       Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
-       List<Product> productsList = new LinkedList<>(Arrays.asList(products));
+   //    Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
+       List<Product> productsList = new LinkedList<>(Arrays.asList(JacksonUtils.deserializeJson("products.json", Product[].class)));
        Iterator<Product> iterator = productsList.iterator();
        while(iterator.hasNext()) {
            Product pr = iterator.next();
