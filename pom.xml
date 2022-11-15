@@ -44,7 +44,6 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.6.1</version>
-      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
@@ -76,7 +75,6 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <version>5.1.1</version>
-      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
     <dependency>
