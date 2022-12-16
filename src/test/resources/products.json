@@ -2,51 +2,61 @@
   {
     "id": 1215,
     "featured": true,
-    "name": "Blue Shoes"
+    "name": "Blue Shoes",
+    "apiName": "blue-shoes"
   },
   {
     "id": 1198,
     "featured": true,
-    "name": "Anchor Bracelet"
+    "name": "Anchor Bracelet",
+    "apiName": "anchor-bracelet"
   },
   {
     "id": 1214,
     "featured": false,
-    "name": "Red Shoes"
+    "name": "Red Shoes",
+    "apiName": "red-shoes"
   },
   {
     "id": 1209,
     "featured": true,
-    "name": "Denim Blue Jeans"
+    "name": "Denim Blue Jeans",
+    "apiName": "denim-blue-jeans"
   },
   {
     "id": 1202,
     "featured": false,
-    "name": "Green Tshirt"
+    "name": "Green Tshirt",
+    "apiName": "green-tshirt"
   },
   {
     "id": 1205,
     "featured": true,
-    "name": "Basic Blue Jeans"
+    "name": "Basic Blue Jeans",
+    "apiName": "basic-blue-jeans"
   },
   {
     "id": 1196,
     "featured": true,
-    "name": "Blue Tshirt"
+    "name": "Blue Tshirt",
+    "apiName": "blue-tshirt"
   },
   {
     "id": 1193,
     "featured": false,
-    "name": "Black Over-the-shoulder Handbag"
+    "name": "Black Over-the-shoulder Handbag",
+    "apiName": "black-over-the-shoulder-handbag"
   },
   {
     "id": 1199,
     "featured": false,
-    "name": "Boho Bangle Bracelet"
+    "name": "Boho Bangle Bracelet",
+    "apiName": "boho-bangle-bracelet"
   },
   {
     "id": 1206,
     "featured": false,
-    "name": "Blue Denim Shorts"
+    "name": "Blue Denim Shorts",
+    "apiName": "blue-denim-shorts"
   }
 ]

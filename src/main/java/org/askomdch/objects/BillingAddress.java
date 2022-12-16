@@ -113,7 +113,7 @@ public class BillingAddress {
 
     @Override
     public String toString() {
-        return "BillingAddress{" +
+        return "editBillingAddress{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", addressLineOne='" + addressLineOne + '\'' +

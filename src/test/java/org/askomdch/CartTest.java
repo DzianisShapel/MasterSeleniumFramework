@@ -2,7 +2,7 @@ package org.askomdch;
 
 import org.askomdch.api.CartApi;
 import org.askomdch.base.BaseTest;
-import org.askomdch.dataprovider.MyDataProvider;
+import org.askomdch.dataprovider.DataProviderForTests;
 import org.askomdch.objects.Coupon;
 import org.askomdch.pages.CartPage;
 import org.testng.Assert;
@@ -13,7 +13,7 @@ import java.math.RoundingMode;
 
 public class CartTest extends BaseTest {
 
-    @Test(dataProvider = "getCoupons", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "getCoupons", dataProviderClass = DataProviderForTests.class)
     public void applyCouponCodes(Coupon coupon) {
 
         CartPage cartPage = new CartPage(getDriver()).load();

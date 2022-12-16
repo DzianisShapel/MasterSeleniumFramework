@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductPage extends BasePage {
 
-    private final By addToCartBtn = By.cssSelector("button[value='1210']");
+    private final By addToCartBtn = By.xpath("//button[@class='single_add_to_cart_button button alt']");
 
     private final By productTitle = By.cssSelector(".product_title.entry-title");
     private final By alert = By.cssSelector("div[role='alert']");
@@ -21,8 +21,8 @@ public class ProductPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle)).getText();
     }
 
-    public ProductPage load(){
-        load("/product/dark-grey-jeans/");
+    public ProductPage loadProductPage(String apiName){
+        load("/product/" + apiName + "/");
         return this;
     }
 

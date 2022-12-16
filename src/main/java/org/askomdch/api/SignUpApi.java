@@ -63,5 +63,4 @@ public class SignUpApi {
         }
         this.cookies = response.getDetailedCookies();
     }
-
 }

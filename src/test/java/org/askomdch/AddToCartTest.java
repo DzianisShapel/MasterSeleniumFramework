@@ -1,7 +1,7 @@
 package org.askomdch;
 
 import org.askomdch.base.BaseTest;
-import org.askomdch.dataprovider.MyDataProvider;
+import org.askomdch.dataprovider.DataProviderForTests;
 import org.askomdch.objects.Product;
 import org.askomdch.pages.CartPage;
 import org.askomdch.pages.HomePage;
@@ -27,7 +27,7 @@ public class AddToCartTest extends BaseTest {
 
     @Test
     public void addMultipleProductsToCartFromStorePage() throws IOException {
-        Iterator<Product> iterator = MyDataProvider.getStoreProducts();
+        Iterator<Product> iterator = DataProviderForTests.getStoreProducts();
         StorePage storePage = new StorePage(getDriver()).load();
         List<String> expectedProducts = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -40,16 +40,16 @@ public class AddToCartTest extends BaseTest {
         Assert.assertEquals(actualProducts, expectedProducts);
     }
 
-    @Test
-    public void AddToCartFromProductPage() {
+    @Test(dataProvider = "getOneProduct", dataProviderClass = DataProviderForTests.class)
+    public void AddToCartFromProductPage(Product product) {
         ProductPage productPage = new ProductPage(getDriver()).
-                load().
+                loadProductPage(product.getApiName()).
                 clickAddToCartBtn();
-        Assert.assertTrue(productPage.getAlert().contains("has been added to your cart."));
+        Assert.assertTrue(productPage.getAlert().contains("“" + product.getName() +"” has been added to your cart."));
     }
 
     //Section 28
-    @Test(dataProvider = "getFeaturedProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "getFeaturedProducts", dataProviderClass = DataProviderForTests.class)
     public void addFeaturedProductToCart(Product product) {
         CartPage cartPage = new HomePage(getDriver()).load().
                 getProductThumbnail().clickAddToCartBtn(product.getName()).

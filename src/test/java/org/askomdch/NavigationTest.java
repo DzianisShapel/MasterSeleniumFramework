@@ -1,6 +1,7 @@
 package org.askomdch;
 
 import org.askomdch.base.BaseTest;
+import org.askomdch.dataprovider.DataProviderForTests;
 import org.askomdch.objects.Product;
 import org.askomdch.pages.HomePage;
 import org.askomdch.pages.StorePage;
@@ -28,11 +29,11 @@ public class NavigationTest extends BaseTest {
         Assert.assertTrue(productPage.getProductTitle().equals(new Product(1215).getName()));
     }
 
-    @Test
-    public void NavigateFromHomeToFeaturedProductPage() throws IOException {
+    @Test(dataProvider = "getFeaturedProducts", dataProviderClass = DataProviderForTests.class)
+    public void NavigateFromHomeToFeaturedProductPage(Product product) throws IOException {
         ProductPage productPage = new HomePage(getDriver()).
                 load().
-                navigateToProductPage(1198);
-        Assert.assertTrue(productPage.getProductTitle().equals(new Product(1198).getName()));
+                navigateToProductPage(product.getId());
+        Assert.assertTrue(productPage.getProductTitle().equals(product.getName()));
     }
 }

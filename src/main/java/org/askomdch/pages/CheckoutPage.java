@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.askomdch.base.BasePage;
 import org.askomdch.objects.BillingAddress;
-import org.askomdch.objects.User;
 
 public class CheckoutPage extends BasePage {
 
@@ -120,9 +119,9 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage login(User user){
-       return enterUserName(user.getUsername()).
-               enterPassword(user.getPassword()).
+    public CheckoutPage login(String username, String password){
+       return enterUserName(username).
+               enterPassword(password).
                clickLoginBtn().waitForLoginBtnToDisappear();
     }
 

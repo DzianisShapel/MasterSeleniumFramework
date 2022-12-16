@@ -3,6 +3,18 @@
     "firstName": "demo",
     "lastName": "user",
     "country": "India",
+    "countryCode": "IN",
+    "stateCode": "MH",
+    "addressLineOne": "Pune",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "postalCode": "411001",
+    "email": "dzianis283@tut.by"
+  },
+  {
+    "firstName": "demo",
+    "lastName": "user",
+    "country": "India",
     "addressLineOne": "Pune",
     "city": "Pune",
     "state": "Maharashtra",

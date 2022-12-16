@@ -1,6 +1,5 @@
 package org.askomdch.base;
 
-import com.beust.jcommander.Parameters;
 import org.askomdch.factory.DriverManagerOriginal;
 import org.askomdch.factory.abstractFactory.DriverManagerAbstract;
 import io.restassured.http.Cookies;
@@ -14,6 +13,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -45,12 +45,12 @@ public class BaseTest {
         return this.driver.get();
     }
 
- //   @Parameters("browser")
+    @Parameters({"browser"})
     @BeforeMethod
     public synchronized void startDriver(@Optional String browser) {
         //will take browser from TestNG.xml
         browser = System.getProperty("browser", browser);
-   //     String browser = "FIREFOX";
+//        String browser = "FIREFOX";
 //        driver = new DriverManager().initializeDriver(browser);
 //        if(browser == null) browser = "CHROME";
 //*      first implementation
@@ -65,7 +65,7 @@ public class BaseTest {
                 "DRIVER = " + getDriver());
     }
 
-  //  @Parameters("browser")
+    @Parameters("browser")
     @AfterMethod
     public synchronized void quitDriver(@Optional String browser, ITestResult result) throws InterruptedException, IOException {
         Thread.sleep(100);

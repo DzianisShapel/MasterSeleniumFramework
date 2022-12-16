@@ -10,9 +10,8 @@ public class AccountPage extends BasePage {
     private final By usernameFld =  By.cssSelector("#username");
     private final By passwordFld =  By.cssSelector("#password");
     private final By loginBtn =  By.cssSelector("button[value='Log in']");
-    private final By contentMsg = By.cssSelector("div[id='content'] li:nth-child(1)");
-    private final By orders  = By.cssSelector("li[class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders'] a");
-
+    private final By helloMessage = By.xpath("//div[@class='woocommerce-notices-wrapper']/following-sibling::p");
+    private final By errorMessage = By.xpath("//ul[@class='woocommerce-error']/child::li");
 
     public AccountPage(WebDriver driver) {
         super(driver);
@@ -25,10 +24,6 @@ public class AccountPage extends BasePage {
         return this;
     }
 
-    public String getContentMessage(){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(contentMsg)).getText();
-    }
-
     /*
     public AccountPage navigateToOrders(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(orders)).click();
@@ -38,5 +33,13 @@ public class AccountPage extends BasePage {
     public AccountPage load(){
         load("/account/");
         return this;
+    }
+
+    public String getHelloMessage() {
+        return driver.findElement(helloMessage).getText();
+    }
+
+    public String getErrorMessage(){
+        return driver.findElement(errorMessage).getText();
     }
 }

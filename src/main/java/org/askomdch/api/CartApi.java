@@ -6,7 +6,6 @@ import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.askomdch.utils.ConfigLoader;
-
 import java.util.HashMap;
 
 public class CartApi {

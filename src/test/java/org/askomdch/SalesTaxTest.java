@@ -2,7 +2,7 @@ package org.askomdch;
 
 import org.askomdch.api.CartApi;
 import org.askomdch.base.BaseTest;
-import org.askomdch.dataprovider.MyDataProvider;
+import org.askomdch.dataprovider.DataProviderForTests;
 import org.askomdch.objects.BillingAddress;
 import org.askomdch.pages.CheckoutPage;
 import io.qameta.allure.Description;
@@ -22,7 +22,7 @@ public class SalesTaxTest extends BaseTest {
 
     @Story("Calculate Sales tax")
     @Description("Guest user perform checkout from different USA states")
-    @Test(dataProvider = "getUSABillingAddresses", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "getUSABillingAddresses", dataProviderClass = DataProviderForTests.class)
     public void GuestCheckoutFromDifferentUSAStates(BillingAddress billingAddress) {
         CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
         CartApi cartApi = new CartApi();

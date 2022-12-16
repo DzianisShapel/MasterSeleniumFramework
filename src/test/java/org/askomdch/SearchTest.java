@@ -30,7 +30,7 @@ public class SearchTest extends BaseTest {
     }
 
     @Test
-    public void SearchNonExistingProduct() throws IOException {
+    public void SearchNonExistingProduct() {
         FakerUtils unexistingProduct = new FakerUtils();
 
         StorePage storePage = new StorePage(getDriver()).

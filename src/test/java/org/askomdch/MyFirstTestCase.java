@@ -47,11 +47,11 @@ public class MyFirstTestCase extends BaseTest {
 
     }
 
-    @Test
+    /*@Test
     public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
 
         String searchFor = "Blue";
-        BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
+        editBillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", editBillingAddress.class);
         Product product = new Product(1215);
         User user = new User(ConfigLoader.getInstance().getUsername(), ConfigLoader.getInstance().getPassword());
 
@@ -74,7 +74,7 @@ public class MyFirstTestCase extends BaseTest {
         Thread.sleep(3000);
 
         checkoutPage.
-                login(user).
+                login(user, ).
                 setFirstNameFld("demo").
                 setLastNameFld("user").
                 setBillingAddressFld("Grodno").
@@ -85,5 +85,5 @@ public class MyFirstTestCase extends BaseTest {
         checkoutPage.placeOrder();
         Thread.sleep(5000);
         Assert.assertEquals(checkoutPage.getNotice(), "Thank you. Your order has been received.");
-    }
+    }*/
 }

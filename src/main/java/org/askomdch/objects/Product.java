@@ -10,6 +10,7 @@ public class Product {
     private int id;
     private String name;
     private Boolean featured;
+    private String apiName;
 
     public Product() {
     }
@@ -25,16 +26,13 @@ public class Product {
                 this.id = id;
                 this.name = product.getName();
                 this.featured = product.getFeatured();
+                this.apiName = product.getApiName();
             }
         }
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,7 +43,12 @@ public class Product {
         this.name = name;
     }
 
+    public String getApiName() {
+        return apiName;
+    }
+
     public Boolean getFeatured() {
         return featured;
     }
+
 }
