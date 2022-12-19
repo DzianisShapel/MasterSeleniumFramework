@@ -4,23 +4,7 @@
     <test name="Chrome" thread-count="5" parallel="methods">
         <parameter name="browser" value="CHROME"/>
         <packages>
-            <package name="org.selenium.pom.tests"/>
+            <package name="src.test.java.org.askomdch"/>
         </packages>
-<!--        <classes>-->
-<!--            <class name = "AddToCartTest">-->
-<!--                <methods>-->
-<!--                    <include name = "addOneProductToCartFromStorePage"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-    </test>
-    <test name="Firefox" thread-count="2" parallel="methods">
-        <parameter name="browser" value="FIREFOX"/>
-        <packages>
-            <package name="org.selenium.pom.tests"/>
-        </packages>
-<!--        <classes>
-            <class name="MyFirstTestCase"/>
-        </classes>-->
     </test>
 </suite>
