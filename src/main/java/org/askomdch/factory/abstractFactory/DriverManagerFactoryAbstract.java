@@ -4,7 +4,7 @@ import org.askomdch.constants.DriverType;
 
 public class DriverManagerFactoryAbstract {
 
-    public static DriverManagerAbstract getManager(DriverType driverType) {
+    /*public static DriverManagerAbstract getManager(DriverType driverType) {
         //based on driverType we are sending it is returning a new object of the corresponding class
         // which is implementing DriverManager interface
         switch (driverType) {
@@ -16,5 +16,5 @@ public class DriverManagerFactoryAbstract {
             }
             default -> throw new IllegalStateException("Invalid driver: " + driverType);
         }
-    }
+    }*/
 }
